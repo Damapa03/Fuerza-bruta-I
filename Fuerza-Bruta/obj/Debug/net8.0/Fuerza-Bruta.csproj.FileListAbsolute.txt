@@ -12,3 +12,4 @@ C:\Users\damap\Mi unidad (dmarpac979@g.educaand.es)\PSP\2ºTrimestre\Fuerza-Brut
 C:\Users\damap\Mi unidad (dmarpac979@g.educaand.es)\PSP\2ºTrimestre\Fuerza-Bruta\Fuerza-Bruta\obj\Debug\net8.0\Fuerza-Bruta.pdb
 C:\Users\damap\Mi unidad (dmarpac979@g.educaand.es)\PSP\2ºTrimestre\Fuerza-Bruta\Fuerza-Bruta\obj\Debug\net8.0\Fuerza-Bruta.genruntimeconfig.cache
 C:\Users\damap\Mi unidad (dmarpac979@g.educaand.es)\PSP\2ºTrimestre\Fuerza-Bruta\Fuerza-Bruta\obj\Debug\net8.0\ref\Fuerza-Bruta.dll
+C:\Users\damap\Mi unidad (dmarpac979@g.educaand.es)\PSP\2ºTrimestre\Fuerza-Bruta\Fuerza-Bruta\obj\Debug\net8.0\Fuerza-Bruta.sourcelink.json

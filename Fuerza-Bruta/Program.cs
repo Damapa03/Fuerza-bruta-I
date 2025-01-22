@@ -12,7 +12,7 @@ class Program
         {
             string[] contrasenias = File.ReadAllLines("..\\..\\..\\Password\\2151220-passwords.txt");
             
-            Array.Copy(contrasenias, listaRecortada, contrasenias.Length);
+            Array.Copy(contrasenias, listaRecortada, 40);
             
         }
         catch (IOException e)
@@ -53,6 +53,7 @@ class Program
         
         foreach (var password in listaRecortada)
         {
+            Console.WriteLine(password);
             if (contraseniaHashed == GenerarHashSHA256(password))
             {
                 flag = true;
