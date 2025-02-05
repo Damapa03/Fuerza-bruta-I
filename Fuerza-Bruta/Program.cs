@@ -1,68 +1,34 @@
 using System.Security.Cryptography;
 using System.Text;
+using Fuerza_Bruta;
 
 class Program
 {
     static void Main(string[] args)
     {
-        String contraseniaHashed = GenerarHashSHA256("!!!Daniel");
-            
+        HashGenerator hashGenerator = new HashGenerator();
+        FuerzaBrutaMonoHilo monoHilo = new FuerzaBrutaMonoHilo();
+        FuerzaBrutaMultiHilo multiHilo = new FuerzaBrutaMultiHilo();
+        
+        String contraseniaHashed = hashGenerator.GenerarHashSHA256("!!!Daniel");
+
+        string[] contrasenias = File.ReadAllLines("..\\..\\..\\Password\\2151220-passwords.txt");
         string[] listaRecortada = new string[40];
-        try
+        
+        Console.WriteLine("Elija el metodo de busqueda:\n1. Mono Hilo\n2. Multi Hilo");
+        String opcion = Console.ReadLine();
+        if (opcion == "1")
         {
-            string[] contrasenias = File.ReadAllLines("..\\..\\..\\Password\\2151220-passwords.txt");
-            
             Array.Copy(contrasenias, listaRecortada, 40);
-            
+            monoHilo.fuerzaBrutaMonoHilo(contraseniaHashed, listaRecortada);
         }
-        catch (IOException e)
+
+        if (opcion == "2")
         {
-            Console.WriteLine("The file could not be read:");
-            Console.WriteLine(e.Message);
+            multiHilo.fuerzaBrutaMultiHilo(contraseniaHashed, contrasenias);
         }
-        
-        fuerzaBruta(contraseniaHashed, listaRecortada);
         
     }
+
     
-    static string GenerarHashSHA256(string texto)
-    {
-        // Crear el objeto SHA256
-        using (SHA256 sha256 = SHA256.Create())
-        {
-            // Convertir el texto a bytes
-            byte[] bytesTexto = Encoding.UTF8.GetBytes(texto);
-
-            // Calcular el hash
-            byte[] hashBytes = sha256.ComputeHash(bytesTexto);
-
-            // Convertir los bytes del hash a una representación hexadecimal
-            StringBuilder sb = new StringBuilder();
-            foreach (byte b in hashBytes)
-            {
-                sb.Append(b.ToString("x2")); // Formato hexadecimal (dos dígitos)
-            }
-
-            return sb.ToString();
-        }
-    }
-
-    static void fuerzaBruta(String contraseniaHashed, string[] listaRecortada)
-    {
-        Boolean flag = false;
-        
-        foreach (var password in listaRecortada)
-        {
-            Console.WriteLine(password);
-            if (contraseniaHashed == GenerarHashSHA256(password))
-            {
-                flag = true;
-            }
-        }
-
-        if (flag)
-        {
-            Console.WriteLine("Fuerza bruta con exito");
-        }
-    }
 }
